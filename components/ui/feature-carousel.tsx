@@ -63,7 +63,7 @@ export const HeroSection = React.forwardRef<HTMLDivElement, HeroProps>(
                             return (
                                 <div
                                     key={index}
-                                    className="absolute w-40 h-[335px] sm:w-48 sm:h-[415px] transition-all duration-1000 ease-in-out flex items-center justify-center"
+                                    className="absolute w-40 h-[338px] sm:w-48 sm:h-[415px] transition-all duration-1000 ease-in-out flex items-center justify-center"
                                     style={{
                                         transform: `translateX(${pos * 40}%) scale(${isCenter ? 1 : isAdjacent ? 0.75 : 0.5}) translateZ(${isCenter ? 0 : -150}px)`,
                                         zIndex: isCenter ? 10 : isAdjacent ? 5 : 1,
