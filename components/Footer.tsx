@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Github, Heart, Shield, FileText, HelpCircle } from "lucide-react";
 import styles from "../styles/footer.module.css";
+import { assetPath } from "@/lib/utils";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -49,12 +50,12 @@ export default function Footer() {
                     <div className={styles.bottomBrand}>
                         <div className="relative w-8 h-8 flex items-center justify-center group overflow-hidden">
                             <img
-                                src="/Cashiro.svg"
+                                src={assetPath("/Cashiro.svg")}
                                 alt="Cashiro Logo Solid"
                                 className="w-full h-full object-contain transition-all duration-500 absolute inset-0 opacity-0 dark:opacity-100 dark:invert"
                             />
                             <img
-                                src="/Cashiro_outline.svg"
+                                src={assetPath("/Cashiro_outline.svg")}
                                 alt="Cashiro Logo Outline"
                                 className="w-full h-full object-contain transition-all duration-500 absolute inset-0 opacity-100 dark:opacity-0"
                             />

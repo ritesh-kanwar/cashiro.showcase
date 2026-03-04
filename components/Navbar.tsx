@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Wallet, Menu, X, Download, Sun, Moon } from "lucide-react";
 import styles from "../styles/navbar.module.css";
+import { assetPath } from "@/lib/utils";
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -44,12 +45,12 @@ export default function Navbar() {
                     <div className="relative w-8 h-8 flex items-center justify-center group overflow-hidden">
                         {/* Layered Logos: Solid for Dark, Outline for Light */}
                         <img
-                            src="/Cashiro.svg"
+                            src={assetPath("/Cashiro.svg")}
                             alt="Cashiro Logo Solid"
                             className="w-full h-full object-contain transition-all duration-500 absolute inset-0 opacity-0 dark:opacity-100 dark:invert"
                         />
                         <img
-                            src="/Cashiro_outline.svg"
+                            src={assetPath("/Cashiro_outline.svg")}
                             alt="Cashiro Logo Outline"
                             className="w-full h-full object-contain transition-all duration-500 absolute inset-0 opacity-100 dark:opacity-0"
                         />

@@ -3,13 +3,14 @@
 import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { cn, assetPath } from '@/lib/utils';
 
 // --- TYPES ---
 interface HeroProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
     title: React.ReactNode;
     subtitle: string;
     images: { src: string; alt: string; }[];
+    theme?: 'light' | 'dark';
     actions?: React.ReactNode;
     metrics?: React.ReactNode;
     children?: React.ReactNode;
@@ -17,7 +18,7 @@ interface HeroProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> 
 
 // --- HERO SECTION COMPONENT ---
 export const HeroSection = React.forwardRef<HTMLDivElement, HeroProps>(
-    ({ title, subtitle, images, actions, metrics, children, className, ...props }, ref) => {
+    ({ title, subtitle, images, theme, actions, metrics, children, className, ...props }, ref) => {
         const [currentIndex, setCurrentIndex] = React.useState(Math.floor(images.length / 2));
 
         const handleNext = React.useCallback(() => {
@@ -72,7 +73,7 @@ export const HeroSection = React.forwardRef<HTMLDivElement, HeroProps>(
                                 >
                                     <div className="relative w-full h-full p-[6px] bg-black rounded-[1.8rem] sm:rounded-[1.8rem] shadow-xl border border-white/5 overflow-hidden">
                                         <img
-                                            src={image.src}
+                                            src={assetPath(image.src, theme)}
                                             alt={image.alt}
                                             className="w-full h-full object-contain bg-[#111] rounded-[1.2rem] sm:rounded-[2rem]"
                                         />
@@ -150,7 +151,7 @@ export const HeroSection = React.forwardRef<HTMLDivElement, HeroProps>(
                                     >
                                         <div className="relative w-full h-full p-2 bg-black rounded-[2rem] shadow-2xl border-2 border-white/5 ring-1 ring-white/10 overflow-hidden">
                                             <img
-                                                src={image.src}
+                                                src={assetPath(image.src, theme)}
                                                 alt={image.alt}
                                                 className="w-full h-full object-contain bg-[#111] rounded-[1.2rem] saturate-[1.1] contrast-[1.1]"
                                             />

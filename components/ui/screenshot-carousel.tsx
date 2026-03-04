@@ -4,6 +4,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useAnimationFrame, useMotionValue } from 'framer-motion';
 import { GlowCard } from './spotlight-card';
 import styles from '@/styles/home.module.css';
+import { assetPath } from '@/lib/utils';
 
 interface Screenshot {
     src: string;
@@ -100,7 +101,7 @@ export const ScreenshotCarousel: React.FC<ScreenshotCarouselProps> = ({ screensh
                         >
                             <div className={styles.screenshotInner}>
                                 <img
-                                    src={item.src.replace('${theme}', theme)}
+                                    src={assetPath(item.src, theme)}
                                     alt={item.alt}
                                     className={styles.screenshotImage}
                                     draggable={false}
