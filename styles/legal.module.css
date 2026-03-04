@@ -1,0 +1,97 @@
+.legalPage {
+    padding-top: var(--header-height);
+}
+
+.header {
+    padding: 80px 0 60px;
+    background: radial-gradient(circle at bottom, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+}
+
+.headerContent h1 {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+.lastUpdated {
+    color: var(--muted-foreground);
+    font-size: 0.95rem;
+}
+
+.content {
+    padding: 80px 0 120px;
+}
+
+.legalBody {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.legalBody h2 {
+    font-size: 1.75rem;
+    margin: 48px 0 24px;
+    color: var(--foreground);
+}
+
+.legalBody p {
+    color: var(--muted-foreground);
+    line-height: 1.7;
+    font-size: 1.05rem;
+    margin-bottom: 24px;
+}
+
+.legalBody ul {
+    list-style-type: disc;
+    margin-left: 24px;
+    margin-bottom: 32px;
+    color: var(--muted-foreground);
+}
+
+.legalBody li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.privacyHighlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 80px;
+}
+
+.highlightCard {
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.highlightCard h3 {
+    font-size: 1.15rem;
+    margin: 16px 0 12px;
+}
+
+.highlightCard p {
+    color: var(--muted-foreground);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+@media (max-width: 992px) {
+    .privacyHighlights {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .headerContent h1 {
+        font-size: 2.25rem;
+    }
+}

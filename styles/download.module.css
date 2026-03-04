@@ -1,0 +1,140 @@
+.downloadPage {
+    padding-top: var(--header-height);
+}
+
+.hero {
+    padding: 80px 0 60px;
+    background: radial-gradient(circle at bottom, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+    text-align: center;
+}
+
+.heroContent h1 {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+.heroContent p {
+    font-size: 1.25rem;
+    color: var(--muted-foreground);
+}
+
+.downloadOptions {
+    padding-bottom: 120px;
+}
+
+.optionsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 80px;
+}
+
+.optionCard {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 48px 32px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.optionCard:hover {
+    transform: translateY(-8px);
+    background: var(--accent);
+    backdrop-filter: blur(10px);
+    border-color: var(--foreground);
+}
+
+.optionIcon {
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: var(--foreground);
+}
+
+.optionCard h3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+.optionCard p {
+    color: var(--muted-foreground);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    flex: 1;
+}
+
+.optionCard a {
+    width: 100%;
+    justify-content: center;
+}
+
+.requirements {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    max-width: 800px;
+    margin: 0 auto 60px;
+}
+
+.reqHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.reqHeader h3 {
+    font-size: 1.25rem;
+}
+
+.requirements ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.requirements li {
+    color: var(--muted-foreground);
+    font-size: 0.95rem;
+}
+
+.requirements li strong {
+    color: var(--foreground);
+}
+
+.fDroidBadge {
+    text-align: center;
+    color: var(--muted-foreground);
+}
+
+.fossTag {
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 992px) {
+    .optionsGrid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .requirements ul {
+        grid-template-columns: 1fr;
+    }
+}

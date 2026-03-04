@@ -1,0 +1,123 @@
+.faqPage {
+    padding-top: var(--header-height);
+}
+
+.hero {
+    padding: 80px 0 60px;
+    background: radial-gradient(circle at bottom, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+    text-align: center;
+}
+
+.heroContent {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.icon {
+    margin-bottom: 24px;
+    display: inline-flex;
+}
+
+.heroContent h1 {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+.heroContent p {
+    font-size: 1.25rem;
+    color: var(--muted-foreground);
+}
+
+.faqList {
+    padding-bottom: 120px;
+}
+
+.accordionGrid {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faqItem {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 0 32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.faqItem:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.active {
+    border-color: var(--foreground);
+    background: var(--accent);
+    backdrop-filter: blur(10px);
+}
+
+.faqQuestion {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faqQuestion h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--foreground);
+}
+
+.chevron {
+    color: var(--muted-foreground);
+    transition: transform 0.3s ease;
+}
+
+.active .chevron {
+    transform: rotate(180deg);
+    color: var(--foreground);
+}
+
+.faqAnswer {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0, 1, 0, 1);
+}
+
+.active .faqAnswer {
+    max-height: 1000px;
+    padding-bottom: 32px;
+    transition: all 0.4s cubic-bezier(1, 0, 1, 0);
+}
+
+.faqAnswer p {
+    color: var(--muted-foreground);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.contactCta {
+    margin-top: 60px;
+    text-align: center;
+    color: var(--muted-foreground);
+}
+
+.contactCta a {
+    color: var(--foreground);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .heroContent h1 {
+        font-size: 2.25rem;
+    }
+
+    .faqQuestion h3 {
+        font-size: 1.05rem;
+    }
+}
