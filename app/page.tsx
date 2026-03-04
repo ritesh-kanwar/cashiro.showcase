@@ -34,18 +34,18 @@ export default function Home() {
   }, []);
 
   const galleryScreenshots = [
-    { src: '/screenshots/transactions_${theme}.png', alt: "Transactions View", title: "Transactions View" },
-    { src: '/screenshots/analytics_${theme}.png', alt: "Analytics View", title: "Analytics View" },
-    { src: '/screenshots/budgets_${theme}.png', alt: "Budget View", title: "Budget View" },
-    { src: '/screenshots/budget_history_${theme}.png', alt: "Budget History", title: "Budget History" },
-    { src: '/screenshots/budget_details_${theme}.png', alt: "Budget Detail", title: "Budget Detail" },
-    { src: '/screenshots/chat_${theme}.png', alt: "AI Assistant", title: "AI Assistant" },
-    { src: '/screenshots/subscriptions_${theme}.png', alt: "Subscriptions", title: "Subscriptions" },
-    { src: '/screenshots/categories_${theme}.png', alt: "Categories", title: "Categories" },
-    { src: '/screenshots/smart_rule_${theme}.png', alt: "Smart Rules", title: "Smart Rules" },
-    { src: '/screenshots/settings_${theme}.png', alt: "Settings", title: "Settings" },
-    { src: '/screenshots/appearance_${theme}.png', alt: "Appearance", title: "Appearance" },
-    { src: '/screenshots/profile_${theme}.png', alt: "Profile", title: "Profile" },
+    { src: '/screenshots/transactions_${theme}.webp', alt: "Transactions View", title: "Transactions View" },
+    { src: '/screenshots/analytics_${theme}.webp', alt: "Analytics View", title: "Analytics View" },
+    { src: '/screenshots/budgets_${theme}.webp', alt: "Budget View", title: "Budget View" },
+    { src: '/screenshots/budget_history_${theme}.webp', alt: "Budget History", title: "Budget History" },
+    { src: '/screenshots/budget_details_${theme}.webp', alt: "Budget Detail", title: "Budget Detail" },
+    { src: '/screenshots/chat_${theme}.webp', alt: "AI Assistant", title: "AI Assistant" },
+    { src: '/screenshots/subscriptions_${theme}.webp', alt: "Subscriptions", title: "Subscriptions" },
+    { src: '/screenshots/categories_${theme}.webp', alt: "Categories", title: "Categories" },
+    { src: '/screenshots/smart_rule_${theme}.webp', alt: "Smart Rules", title: "Smart Rules" },
+    { src: '/screenshots/settings_${theme}.webp', alt: "Settings", title: "Settings" },
+    { src: '/screenshots/appearance_${theme}.webp', alt: "Appearance", title: "Appearance" },
+    { src: '/screenshots/profile_${theme}.webp', alt: "Profile", title: "Profile" },
   ];
 
   return (
@@ -60,11 +60,11 @@ export default function Home() {
         }
         subtitle="Cashiro turns your bank SMS and PDF statements into a clean, searchable financial timeline with secure regex patterns. No cloud, no tracking, just your money."
         images={[
-          { src: '/screenshots/home_${theme}.png', alt: "Cashiro Home Screen" },
-          { src: '/screenshots/analytics_${theme}.png', alt: "Cashiro Analytics Screen" },
-          { src: '/screenshots/budgets_${theme}.png', alt: "Cashiro Budgets Screen" },
-          { src: '/screenshots/transactions_${theme}.png', alt: "Cashiro Transactions Screen" },
-          { src: '/screenshots/profile_${theme}.png', alt: "Cashiro Profile Screen" },
+          { src: '/screenshots/home_${theme}.webp', alt: "Cashiro Home Screen" },
+          { src: '/screenshots/analytics_${theme}.webp', alt: "Cashiro Analytics Screen" },
+          { src: '/screenshots/budgets_${theme}.webp', alt: "Cashiro Budgets Screen" },
+          { src: '/screenshots/transactions_${theme}.webp', alt: "Cashiro Transactions Screen" },
+          { src: '/screenshots/profile_${theme}.webp', alt: "Cashiro Profile Screen" },
         ]}
         theme={theme}
         className={styles.heroWrapper}

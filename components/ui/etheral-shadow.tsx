@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useId, useEffect, CSSProperties } from 'react';
+import React, { useRef, useId, useEffect, CSSProperties, useState } from 'react';
 import { animate, useMotionValue, AnimationPlaybackControls } from 'framer-motion';
 
 // Type definitions
@@ -54,6 +54,20 @@ const useInstanceId = (): string => {
     return instanceId;
 };
 
+/** Returns true when the device is a mobile-sized screen (≤768px).
+ *  On mobile the heavy SVG displacement filter is skipped to avoid scroll jank. */
+function useIsMobile(): boolean {
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        const mq = window.matchMedia('(max-width: 768px)');
+        setIsMobile(mq.matches);
+        const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+        mq.addEventListener('change', handler);
+        return () => mq.removeEventListener('change', handler);
+    }, []);
+    return isMobile;
+}
+
 export function EtherealShadow({
     sizing = 'fill',
     color = 'rgba(128, 128, 128, 1)',
@@ -63,7 +77,9 @@ export function EtherealShadow({
     className
 }: ShadowOverlayProps) {
     const id = useInstanceId();
-    const animationEnabled = animation && animation.scale > 0;
+    const isMobile = useIsMobile();
+    // Disable the heavy animated filter on mobile to prevent scroll jank
+    const animationEnabled = !isMobile && animation && animation.scale > 0;
     const feColorMatrixRef = useRef<SVGFEColorMatrixElement>(null);
     const hueRotateMotionValue = useMotionValue(180);
     const hueRotateAnimation = useRef<AnimationPlaybackControls | null>(null);

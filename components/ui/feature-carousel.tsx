@@ -76,6 +76,8 @@ export const HeroSection = React.forwardRef<HTMLDivElement, HeroProps>(
                                             src={assetPath(image.src, theme)}
                                             alt={image.alt}
                                             className="w-full h-full object-contain bg-[#111] rounded-[1.2rem] sm:rounded-[2rem]"
+                                            loading={isCenter ? 'eager' : 'lazy'}
+                                            decoding="async"
                                         />
                                     </div>
                                 </div>
@@ -154,6 +156,8 @@ export const HeroSection = React.forwardRef<HTMLDivElement, HeroProps>(
                                                 src={assetPath(image.src, theme)}
                                                 alt={image.alt}
                                                 className="w-full h-full object-contain bg-[#111] rounded-[1.2rem] saturate-[1.1] contrast-[1.1]"
+                                                loading={isCenter ? 'eager' : 'lazy'}
+                                                decoding="async"
                                             />
                                         </div>
                                     </div>

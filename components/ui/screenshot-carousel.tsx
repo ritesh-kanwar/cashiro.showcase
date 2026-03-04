@@ -105,6 +105,8 @@ export const ScreenshotCarousel: React.FC<ScreenshotCarouselProps> = ({ screensh
                                     alt={item.alt}
                                     className={styles.screenshotImage}
                                     draggable={false}
+                                    loading="lazy"
+                                    decoding="async"
                                     onLoad={() => {
                                         if (marqueeRef.current) {
                                             setBaseWidth(marqueeRef.current.scrollWidth / 3);
