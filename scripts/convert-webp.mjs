@@ -2,8 +2,9 @@
  * Pre-converts all PNG screenshots in public/screenshots/ to WebP at build time.
  * WebP files are ~50-80% smaller than PNG, significantly improving mobile load time.
  * Run automatically via the `prebuild` npm script.
+ * The script is fault-tolerant: if sharp is unavailable it logs a warning and exits
+ * cleanly so the Next.js build can still proceed (WebP files are committed to the repo).
  */
-import sharp from 'sharp';
 import { readdir, stat } from 'fs/promises';
 import { join, extname, basename } from 'path';
 import { fileURLToPath } from 'url';
@@ -11,6 +12,14 @@ import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+let sharp;
+try {
+    sharp = (await import('sharp')).default;
+} catch {
+    console.warn('[webp] sharp not available — skipping WebP conversion (pre-converted files will be used).');
+    process.exit(0);
+}
 
 const screenshotsDir = join(__dirname, '..', 'public', 'screenshots');
 
