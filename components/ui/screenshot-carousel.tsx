@@ -2,7 +2,6 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useAnimationFrame, useMotionValue } from 'framer-motion';
-import { GlowCard } from './spotlight-card';
 import styles from '@/styles/home.module.css';
 import { assetPath } from '@/lib/utils';
 
@@ -28,6 +27,20 @@ export const ScreenshotCarousel: React.FC<ScreenshotCarouselProps> = ({ screensh
     const [baseWidth, setBaseWidth] = useState(0);
 
     const speed = 0.5;
+
+    // Gate the rAF loop: only animate when the carousel is in the viewport
+    const isVisibleRef = useRef(false);
+
+    useEffect(() => {
+        const el = marqueeRef.current?.parentElement;
+        if (!el) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => { isVisibleRef.current = entry.isIntersecting; },
+            { rootMargin: '100px' }
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
 
     // Calculate width and set initial position
     useEffect(() => {
@@ -68,6 +81,7 @@ export const ScreenshotCarousel: React.FC<ScreenshotCarouselProps> = ({ screensh
     }, [baseWidth, isDragging]);
 
     useAnimationFrame(() => {
+        if (!isVisibleRef.current) return; // skip when off-screen
         if (!isHovered && !isDragging) {
             x.set(x.get() - speed);
         }
@@ -93,12 +107,9 @@ export const ScreenshotCarousel: React.FC<ScreenshotCarouselProps> = ({ screensh
             >
                 {extendedScreenshots.map((item, index) => (
                     <div key={`${item.title}-${index}`} className={styles.marqueeItem}>
-                        <GlowCard
-                            glowColor="blue"
-                            className={styles.screenshotGlowCard}
-                            customSize={true}
-                            radius={32}
-                        >
+                        {/* Plain card div — avoids 36× GlowCard instances (each had background-attachment:fixed
+                            which triggers a full-page repaint on every scroll frame on mobile). */}
+                        <div className={styles.screenshotCard}>
                             <div className={styles.screenshotInner}>
                                 <img
                                     src={assetPath(item.src, theme)}
@@ -115,7 +126,7 @@ export const ScreenshotCarousel: React.FC<ScreenshotCarouselProps> = ({ screensh
                                 />
                                 <span className={styles.screenshotLabel}>{item.title}</span>
                             </div>
-                        </GlowCard>
+                        </div>
                     </div>
                 ))}
             </motion.div>

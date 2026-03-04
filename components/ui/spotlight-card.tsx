@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, ReactNode } from 'react';
+import React, { useEffect, useRef, ReactNode, useState } from 'react';
 
 interface GlowCardProps {
     children: ReactNode;
@@ -97,12 +97,15 @@ const GlowCard: React.FC<GlowCardProps> = ({
             backgroundColor: 'var(--backdrop, transparent)',
             backgroundSize: 'calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)))',
             backgroundPosition: '50% 50%',
-            backgroundAttachment: 'fixed',
+            // NOTE: 'fixed' was removed — it caused full-page repaints on every scroll frame on mobile.
+            // The spotlight gradient tracks pointer via CSS vars so it works correctly with 'scroll'.
+            backgroundAttachment: 'scroll',
             border: 'var(--border-size) solid var(--backup-border)',
             position: 'relative' as const,
             // Do NOT set touchAction: 'none' — that blocks scroll when finger starts on a card
             borderRadius: `${radius}px`,
-            willChange: 'background-image', // promote to GPU layer for smoother hover effects
+            // 'transform' is GPU-compositable; 'background-image' is NOT and creates redundant layers.
+            willChange: 'transform',
         };
 
         // Add width and height if provided
@@ -125,7 +128,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
       inset: calc(var(--border-size) * -1);
       border: var(--border-size) solid transparent;
       border-radius: calc(var(--radius) * 1px);
-      background-attachment: fixed;
+      background-attachment: scroll;
       background-size: calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)));
       background-repeat: no-repeat;
       background-position: 50% 50%;
@@ -192,7 +195,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
           shadow-[0_1rem_2rem_-1rem_black] 
           p-4 
           gap-4 
-          backdrop-blur-[5px]
+          glow-card-blur
           ${className}
         `}
             >

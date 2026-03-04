@@ -256,3 +256,24 @@ button {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* GlowCard backdrop blur: only apply on hover-capable (pointer) devices.
+   On mobile touch screens this class has no effect — stacking 9+ blur layers
+   causes severe scroll jank on mobile GPUs. */
+@media (hover: hover) and (pointer: fine) {
+  .glow-card-blur {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
+}
+
+/* Disable smooth scroll on mobile: the browser's smooth scroll implementation
+   can conflict with the touch compositor, causing jank when programmatic
+   scrolls compete with finger-initiated flings. */
+@media (max-width: 768px) {
+
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+}

@@ -507,13 +507,17 @@
     position: relative;
     mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    /* CSS containment: confines paint/layout recalculation inside this block
+       so the browser doesn't repaint the whole page on marquee animation.  */
+    contain: layout paint;
 }
 
 .marqueeContent {
     display: flex;
     gap: 30px;
     width: max-content;
-    /* Animation moved to framer-motion */
+    /* will-change: transform enables GPU compositing for smooth marquee scroll */
+    will-change: transform;
 }
 
 .marqueeContent:hover {
@@ -524,12 +528,25 @@
     flex-shrink: 0;
 }
 
-.screenshotGlowCard {
-    width: 320px !important;
-    height: auto !important;
-    padding: 12px !important;
-    background: rgba(255, 255, 255, 0.03) !important;
-    border-radius: 2rem !important;
+.screenshotCard {
+    /* Replaces GlowCard wrapper in carousel — styled to match the former GlowCard appearance
+       without the scroll-repaint-causing background-attachment:fixed that GlowCard had. */
+    width: 320px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid hsl(0 0% 60% / 0.12);
+    border-radius: 2rem;
+    flex-shrink: 0;
+    cursor: grab;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease;
+    /* Promote to its own layer to keep card paint isolated during marquee motion */
+    will-change: transform;
+}
+
+.screenshotCard:active {
+    cursor: grabbing;
 }
 
 .screenshotInner {
@@ -563,8 +580,8 @@
 }
 
 @media (max-width: 768px) {
-    .screenshotGlowCard {
-        width: 220px !important;
+    .screenshotCard {
+        width: 220px;
     }
 
     .screenshotLabel {
