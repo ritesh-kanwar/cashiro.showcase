@@ -34,6 +34,7 @@ export default function Home() {
   }, []);
 
   const galleryScreenshots = [
+    { src: '/screenshots/home_${theme}.webp', alt: "Home Screen", title: "Home Screen" },
     { src: '/screenshots/transactions_${theme}.webp', alt: "Transactions View", title: "Transactions View" },
     { src: '/screenshots/analytics_${theme}.webp', alt: "Analytics View", title: "Analytics View" },
     { src: '/screenshots/budgets_${theme}.webp', alt: "Budget View", title: "Budget View" },
