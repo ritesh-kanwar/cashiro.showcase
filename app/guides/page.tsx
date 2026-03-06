@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BookOpen, ArrowRight } from "lucide-react";
 import { guides } from "@/data/guides";
 import styles from "@/styles/guides.module.css";
+import { EtherealShadow } from "@/components/ui/etheral-shadow";
 
 export const metadata = {
     title: "Guides & Documentation — Cashiro",
@@ -12,6 +13,14 @@ export default function GuidesPage() {
     return (
         <div className={styles.guidesPage}>
             <section className={styles.hero}>
+                <div className={styles.heroBackground}>
+                    <EtherealShadow
+                        color="rgba(255, 255, 255, 0.1)"
+                        animation={{ scale: 40, speed: 20 }}
+                        noise={{ opacity: 0.3, scale: 0.5 }}
+                        sizing="fill"
+                    />
+                </div>
                 <div className="container">
                     <div className={styles.heroContent}>
                         <div className={styles.icon}>
@@ -21,6 +30,7 @@ export default function GuidesPage() {
                         <p>Learn how to get the most out of Cashiro with our helpful guides.</p>
                     </div>
                 </div>
+                <div className={styles.scallopDivider}></div>
             </section>
 
             <section className={styles.guidesList}>

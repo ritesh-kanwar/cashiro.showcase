@@ -53,6 +53,7 @@
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-xl: 20px;
+  --glow-card-bg: #ffffff;
 }
 
 .dark {
@@ -88,6 +89,7 @@
   --destructive-foreground: #262626;
   --sidebar-accent-foreground: #fafafa;
   --sidebar-primary-foreground: #171717;
+  --glow-card-bg: hsl(0 0% 60% / 0.12);
 }
 
 @theme inline {

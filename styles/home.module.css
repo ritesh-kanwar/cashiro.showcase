@@ -533,8 +533,8 @@
        without the scroll-repaint-causing background-attachment:fixed that GlowCard had. */
     width: 320px;
     padding: 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 2px solid hsl(0 0% 60% / 0.12);
+    background: var(--glow-card-bg);
+    border: 1px solid var(--border);
     border-radius: 2rem;
     flex-shrink: 0;
     cursor: grab;

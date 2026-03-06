@@ -9,16 +9,18 @@ interface GlowCardProps {
     size?: 'sm' | 'md' | 'lg';
     width?: string | number;
     height?: string | number;
-    customSize?: boolean; // When true, ignores size prop and uses width/height or className
+    customSize?: boolean;
     radius?: number;
+    saturation?: number;
+    lightness?: number;
 }
 
 const glowColorMap = {
-    blue: { base: 220, spread: 200 },
-    purple: { base: 280, spread: 300 },
-    green: { base: 120, spread: 200 },
-    red: { base: 0, spread: 200 },
-    orange: { base: 30, spread: 200 }
+    blue: { base: 220, spread: 200, saturation: 100, lightness: 70 },
+    purple: { base: 280, spread: 300, saturation: 70, lightness: 80 },
+    green: { base: 120, spread: 200, saturation: 100, lightness: 70 },
+    red: { base: 0, spread: 200, saturation: 100, lightness: 70 },
+    orange: { base: 30, spread: 200, saturation: 60, lightness: 80 }
 };
 
 const sizeMap = {
@@ -35,15 +37,15 @@ const GlowCard: React.FC<GlowCardProps> = ({
     width,
     height,
     customSize = false,
-    radius = 14
+    radius = 14,
+    saturation: customSaturation,
+    lightness: customLightness
 }) => {
     const cardRef = useRef<HTMLDivElement>(null);
     const innerRef = useRef<HTMLDivElement>(null);
     const [isHovered, setIsHovered] = React.useState(false);
 
     useEffect(() => {
-        // Skip pointer tracking on touch devices — the spotlight glow is a mouse-only effect.
-        // On mobile, the global pointermove listener fires on every scroll frame, causing jank.
         const isTouchDevice = window.matchMedia('(hover: none)').matches;
         if (isTouchDevice) return;
 
@@ -62,12 +64,12 @@ const GlowCard: React.FC<GlowCardProps> = ({
         return () => document.removeEventListener('pointermove', syncPointer);
     }, []);
 
-    const { base, spread } = glowColorMap[glowColor];
+    const { base, spread, saturation, lightness } = glowColorMap[glowColor];
 
     // Determine sizing
     const getSizeClasses = () => {
         if (customSize) {
-            return ''; // Let className or inline styles handle sizing
+            return '';
         }
         return sizeMap[size];
     };
@@ -76,10 +78,12 @@ const GlowCard: React.FC<GlowCardProps> = ({
         const baseStyles: any = {
             '--base': base,
             '--spread': spread,
+            '--saturation': customSaturation ?? saturation,
+            '--lightness': customLightness ?? lightness,
             '--radius': radius.toString(),
             '--border': '3',
-            '--backdrop': 'hsl(0 0% 60% / 0.12)',
-            '--backup-border': 'var(--backdrop)',
+            '--backdrop': 'var(--glow-card-bg)',
+            '--backup-border': 'var(--border)',
             '--size': '200',
             '--outer': '1',
             '--border-size': 'calc(var(--border, 2) * 1px)',
@@ -192,7 +196,8 @@ const GlowCard: React.FC<GlowCardProps> = ({
           relative 
           grid 
           grid-rows-[1fr_auto] 
-          shadow-[0_1rem_2rem_-1rem_black] 
+          shadow-[0_8px_30px_rgb(0,0,0,0.04)]
+          dark:shadow-[0_1rem_2rem_-1rem_black]
           p-4 
           gap-4 
           glow-card-blur

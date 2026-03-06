@@ -3,14 +3,37 @@
 }
 
 .hero {
-    padding: 80px 0 60px;
-    background: radial-gradient(circle at bottom, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+    padding: 120px 0 100px;
+    background: var(--background);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.heroBackground {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.8;
 }
 
 .heroContent {
     max-width: 700px;
     margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.scallopDivider {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    z-index: 20;
+    background-image: radial-gradient(circle at 15px 30px, var(--background) 15px, transparent 16px);
+    background-size: 30px 30px;
 }
 
 .icon {
@@ -29,12 +52,51 @@
 }
 
 .faqList {
-    padding-bottom: 120px;
+    padding: 80px 0 120px;
+    position: relative;
+    background: var(--background);
+}
+
+.accordionContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+.faqSection {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.sectionHeader {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #262626;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
+}
+
+:global(.dark) .sectionHeader {
+    color: var(--foreground);
+}
+
+.sectionHeader::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 24px;
+    background: #00e5a0;
+    border-radius: 4px;
 }
 
 .accordionGrid {
-    max-width: 800px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -55,7 +117,7 @@
 
 .active {
     border-color: var(--foreground);
-    background: var(--accent);
+    background: var(--muted);
     backdrop-filter: blur(10px);
 }
 
@@ -69,6 +131,10 @@
 .faqQuestion h3 {
     font-size: 1.15rem;
     font-weight: 600;
+    color: #262626;
+}
+
+:global(.dark) .faqQuestion h3 {
     color: var(--foreground);
 }
 
@@ -114,10 +180,30 @@
 
 @media (max-width: 768px) {
     .heroContent h1 {
-        font-size: 2.25rem;
+        font-size: 2rem;
+    }
+
+    .heroContent p {
+        font-size: 1.1rem;
+    }
+
+    .sectionHeader {
+        font-size: 1.4rem;
     }
 
     .faqQuestion h3 {
-        font-size: 1.05rem;
+        font-size: 1rem;
+    }
+
+    .faqAnswer p {
+        font-size: 0.95rem;
+    }
+
+    .faqItem {
+        padding: 0 20px;
+    }
+
+    .faqQuestion {
+        height: 70px;
     }
 }

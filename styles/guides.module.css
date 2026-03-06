@@ -3,23 +3,43 @@
 }
 
 .hero {
-    padding: 80px 0 60px;
-    background: radial-gradient(circle at bottom, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+    padding: 120px 0 100px;
+    background: var(--background);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.heroContent {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.icon {
+    margin-bottom: 24px;
+    display: inline-flex;
+    justify-content: center;
 }
 
 .heroContent h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 16px;
+    color: #262626;
+}
+
+:global(.dark) .heroContent h1 {
+    color: var(--foreground);
 }
 
 .heroContent p {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     color: var(--muted-foreground);
 }
 
 .guidesList {
-    padding-bottom: 120px;
+    padding: 80px 0 120px;
 }
 
 .guidesGrid {
@@ -53,8 +73,13 @@
 }
 
 .cardHeader h3 {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     line-height: 1.3;
+    color: #262626;
+}
+
+:global(.dark) .cardHeader h3 {
+    color: var(--foreground);
 }
 
 .arrow {
@@ -70,6 +95,7 @@
 .guideCard p {
     color: var(--muted-foreground);
     line-height: 1.6;
+    font-size: 0.95rem;
 }
 
 /* Article Page */
@@ -78,9 +104,34 @@
 }
 
 .articleHeader {
-    padding: 60px 0 40px;
-    background: rgba(255, 255, 255, 0.01);
-    border-bottom: 1px solid var(--border);
+    padding: 100px 0 80px;
+    background: var(--background);
+    position: relative;
+    overflow: hidden;
+}
+
+.heroBackground {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.scallopDivider {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    z-index: 20;
+    background-image: radial-gradient(circle at 15px 30px, var(--background) 15px, transparent 16px);
+    background-size: 30px 30px;
+}
+
+.articleHeader .container {
+    position: relative;
+    z-index: 10;
 }
 
 .backLink {
@@ -99,6 +150,11 @@
 .articleTitle {
     font-size: 3rem;
     margin-bottom: 24px;
+    color: #262626;
+}
+
+:global(.dark) .articleTitle {
+    color: var(--foreground);
 }
 
 .articleMeta {
@@ -178,8 +234,16 @@
 }
 
 @media (max-width: 768px) {
+    .heroContent h1 {
+        font-size: 1.8rem;
+    }
+
+    .heroContent p {
+        font-size: 1rem;
+    }
+
     .articleTitle {
-        font-size: 2.25rem;
+        font-size: 2rem;
     }
 
     .ctaButtons {

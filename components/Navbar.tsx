@@ -105,6 +105,11 @@ export default function Navbar() {
                     <Download size={18} />
                     Download
                 </Link>
+
+                <div className={styles.mobileFooter}>
+                    <Link href="/terms" className={styles.mobileSecondaryLink} onClick={() => setIsMobileMenuOpen(false)}>Terms of Service</Link>
+                    <Link href="/privacy" className={styles.mobileSecondaryLink} onClick={() => setIsMobileMenuOpen(false)}>Privacy Policy</Link>
+                </div>
             </div>
         </nav>
     );

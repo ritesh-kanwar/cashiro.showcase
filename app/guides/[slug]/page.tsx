@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ChevronLeft, Calendar, User } from "lucide-react";
 import { guides } from "@/data/guides";
 import styles from "@/styles/guides.module.css";
+import { EtherealShadow } from "@/components/ui/etheral-shadow";
 
 export async function generateStaticParams() {
     return guides.map((guide) => ({
@@ -21,6 +22,14 @@ export default async function GuideArticle({ params }) {
     return (
         <div className={styles.guideArticle}>
             <section className={styles.articleHeader}>
+                <div className={styles.heroBackground}>
+                    <EtherealShadow
+                        color="rgba(255, 255, 255, 0.1)"
+                        animation={{ scale: 40, speed: 20 }}
+                        noise={{ opacity: 0.3, scale: 0.5 }}
+                        sizing="fill"
+                    />
+                </div>
                 <div className="container">
                     <Link href="/guides" className={styles.backLink}>
                         <ChevronLeft size={18} />
@@ -38,6 +47,7 @@ export default async function GuideArticle({ params }) {
                         </div>
                     </div>
                 </div>
+                <div className={styles.scallopDivider}></div>
             </section>
 
             <article className={styles.articleBody}>

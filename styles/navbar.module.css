@@ -148,6 +148,25 @@
     text-align: left;
 }
 
+.mobileFooter {
+    display: flex;
+    gap: 24px;
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.mobileSecondaryLink {
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    color: var(--muted-foreground) !important;
+    font-family: var(--font-sans) !important;
+}
+
+.mobileSecondaryLink:hover {
+    color: var(--foreground) !important;
+}
+
 @media (max-width: 768px) {
     .desktopMenu {
         display: none;

@@ -39,6 +39,13 @@
     color: var(--foreground);
 }
 
+.comingSoon {
+    color: var(--muted-foreground);
+    font-size: 0.9rem;
+    opacity: 0.6;
+    cursor: default;
+}
+
 .bottomBar {
     border-top: 1px solid var(--border);
     padding: 24px 0;

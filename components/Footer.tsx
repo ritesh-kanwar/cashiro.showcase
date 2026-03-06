@@ -16,28 +16,17 @@ export default function Footer() {
                         <Link href="/faq">FAQs</Link>
                     </div>
                     <div className={styles.linkColumn}>
-                        <h3>FEATURES</h3>
-                        <Link href="/#features">SMS Parsing</Link>
-                        <Link href="/#features">PDF Statements</Link>
-                        <Link href="/#features">Budget Tracking</Link>
-                        <Link href="/#features">AI Assistant</Link>
-                        <Link href="/#features">Privacy Guard</Link>
-                    </div>
-                    <div className={styles.linkColumn}>
                         <h3>PRODUCTS</h3>
                         <Link href="/download">Android App</Link>
-                        <Link href="/support">Support</Link>
+                        <span className={styles.comingSoon}>iOS (Coming soon)</span>
                     </div>
                     <div className={styles.linkColumn}>
                         <h3>SOCIALS</h3>
                         <a href="https://github.com/ritesh-kanwar/Cashiro" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a href="https://twitter.com/CashiroApp" target="_blank" rel="noopener noreferrer">X (formerly Twitter)</a>
-                        <a href="https://reddit.com/r/Cashiro" target="_blank" rel="noopener noreferrer">Reddit</a>
-                        <a href="https://t.me/CashiroApp" target="_blank" rel="noopener noreferrer">Telegram</a>
+                        <a href="https://discord.gg/6qaYgpJTg" target="_blank" rel="noopener noreferrer">Discord</a>
                     </div>
                     <div className={styles.linkColumn}>
                         <h3>INFORMATION</h3>
-                        <Link href="/about">About me</Link>
                         <Link href="/contact">Contact me</Link>
                         <Link href="/terms">Terms of Service</Link>
                         <Link href="/privacy">Privacy Policy</Link>
